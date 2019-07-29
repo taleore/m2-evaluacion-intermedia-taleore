@@ -4,6 +4,8 @@ const userNumber = document.querySelector(".main__number");
 const button = document.querySelector(".main__submit__btn");
 const myRandomNumber = getRandomNumber(100);
 const resultNumber = document.querySelector(".main__result");
+const counterNumber = document.querySelector(".counter__number");
+let acc = 0;
 
 function getRandomNumber(max) {
   return Math.ceil(Math.random() * max);
@@ -15,12 +17,18 @@ function compareNumbers() {
 
   if (userNumberValue === myRandomNumber) {
     resultNumber.innerHTML = "HAS GANADO, CAMPEONA!";
-  } else if (userNumberValue < myRandomNumber){
+  } else if (userNumberValue < myRandomNumber) {
     resultNumber.innerHTML = "Demasiado bajo";
-  } else () {
+  } else {
     resultNumber.innerHTML = "Demasiado alto";
   }
 }
 
-//function showResult() {}
-//button.addEventListener('click', showResult());
+function clickButton(event) {
+  event.preventDefault();
+  compareNumbers();
+  acc += 1;
+  counterNumber.innerHTML = acc;
+}
+
+button.addEventListener("click", clickButton);
